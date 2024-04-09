@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+</head>
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <form action="/" method="post">
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" step="any" required><br>
+
+        <label for="sex">Sex:</label><br>
+        <input type="number" id="sex" name="sex" step="any" required><br>
+
+        <label for="cp">Chest Pain Type:</label><br>
+        <input type="number" id="cp" name="cp" step="any" required><br>
+
+        <label for="trestbps">Resting Blood Pressure:</label><br>
+        <input type="number" id="trestbps" name="trestbps" step="any" required><br>
+
+        <label for="chol">Serum Cholesterol:</label><br>
+        <input type="number" id="chol" name="chol" step="any" required><br>
+
+        <label for="fbs">Fasting Blood Sugar:</label><br>
+        <input type="number" id="fbs" name="fbs" step="any" required><br>
+
+        <label for="restecg">Resting Electrocardiographic Results:</label><br>
+        <input type="number" id="restecg" name="restecg" step="any" required><br>
+
+        <label for="thalach">Maximum Heart Rate Achieved:</label><br>
+        <input type="number" id="thalach" name="thalach" step="any" required><br>
+
+        <label for="exang">Exercise Induced Angina:</label><br>
+        <input type="number" id="exang" name="exang" step="any" required><br>
+
+        <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label><br>
+        <input type="number" id="oldpeak" name="oldpeak" step="any" required><br>
+
+        <label for="slope">Slope of the Peak Exercise ST Segment:</label><br>
+        <input type="number" id="slope" name="slope" step="any" required><br>
+
+        <label for="ca">Number of Major Vessels Colored by Flourosopy:</label><br>
+        <input type="number" id="ca" name="ca" step="any" required><br>
+
+        <label for="thal">Thalassemia:</label><br>
+        <input type="number" id="thal" name="thal" step="any" required><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if predict %}
+        <h2>Prediction Result:</h2>
+        <p>{{ predict }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brain Tumor Detection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f0f0f0; /* Set background color */
+      }
+      h1 {
+        margin-top: 30px;
+        padding-top: 20px;
+        text-align: center;
+      }
+      form {
+        margin-top: 20px;
+        text-align: center;
+      }
+      input[type="file"] {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        background-color: #fff; /* Set input field background color */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 5px; /* Add border radius */
+        padding: 10px; /* Add padding */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+        transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Add transition effect */
+      }
+      input[type="file"]:hover,
+      input[type="file"]:focus {
+        border-color: #007bff; /* Change border color on hover/focus */
+        outline: none; /* Remove default outline */
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1); /* Change shadow on hover/focus */
+      }
+      input[type="submit"] {
+        display: block;
+        margin: 0 auto;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      img {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'index.html' %}
+    <h1 class="mt-5">Brain Tumor Detection</h1>
+    <form action="/brain-tumor" method="post" enctype="multipart/form-data">
+      <input
+        type="file"
+        id="fileInput"
+        name="file"
+        accept="image/*"
+        onchange="previewImage(event)"
+      />
+      <input type="submit" value="Upload" />
+      {% if prediction %}
+      <h2>Prediction: {{ prediction }}</h2>
+      {% endif %}
+    </form>
+    <div id="imageContainer"></div>
+
+    <script>
+      function previewImage(event) {
+        var fileInput = event.target;
+        var files = fileInput.files;
+        var imageContainer = document.getElementById("imageContainer");
+
+        if (files.length > 0) {
+          var file = files[0];
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            var img = document.createElement("img");
+            img.src = e.target.result;
+            img.style.maxWidth = "100%";
+            img.style.borderRadius = "5px";
+            img.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+            imageContainer.innerHTML = "";
+            imageContainer.appendChild(img);
+          };
+
+          reader.readAsDataURL(file);
+        }
+      }
+    </script>
+  </body>
+</html>

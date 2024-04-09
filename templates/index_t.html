@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brain Tumor Detection</title>
+    <script>
+      function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var output = document.getElementById("image-preview");
+          output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Brain Tumor Detection</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*" onchange="previewImage(event)" />
+      <input type="submit" value="Upload" />
+    </form>
+    {% if image %}
+        <img id="image-preview" src="" alt="Uploaded Image">
+    {% endif %}
+    {% if prediction %}
+    <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+  </body>
+</html>

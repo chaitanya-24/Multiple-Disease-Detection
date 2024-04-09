@@ -1,0 +1,114 @@
+<!-- heart_disease_form.html -->
+
+<h2 style="text-align: center">Heart Disease Prediction Form</h2>
+<!-- Include heart disease prediction form elements here -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Prediction</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      label {
+        font-weight: bold;
+      }
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'index.html' %}
+    <h1 class="mt-4">Diabetes Prediction</h1>
+    <form action="/diabetes" method="post">
+      <label for="pregnancies">Pregnancies:</label><br />
+      <input
+        type="number"
+        id="pregnancies"
+        name="pregnancies"
+        step="any"
+        required
+      /><br />
+
+      <label for="glucose">Glucose:</label><br />
+      <input
+        type="number"
+        id="glucose"
+        name="glucose"
+        step="any"
+        required
+      /><br />
+
+      <label for="bp">Blood Pressure:</label><br />
+      <input type="number" id="bp" name="bp" step="any" required /><br />
+
+      <label for="st">Skin Thickness:</label><br />
+      <input type="number" id="st" name="st" step="any" required /><br />
+
+      <label for="insulin">Insulin:</label><br />
+      <input
+        type="number"
+        id="insulin"
+        name="insulin"
+        step="any"
+        required
+      /><br />
+
+      <label for="bmi">BMI:</label><br />
+      <input type="number" id="bmi" name="bmi" step="any" required /><br />
+
+      <label for="dpf">Diabetes Pedigree Function:</label><br />
+      <input type="number" id="dpf" name="dpf" step="any" required /><br />
+
+      <label for="age">Age:</label><br />
+      <input type="number" id="age" name="age" step="any" required /><br />
+
+      <input type="submit" value="Predict" /><br />
+
+      {% if predict %}
+      <h2 class="pt-4">Prediction Result:</h2>
+      <h5>{{ predict }}</h5>
+      {% endif %}
+    </form>
+  </body>
+</html>
