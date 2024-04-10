@@ -26,9 +26,14 @@ def preprocess_image(image):
 
 
 
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('heart_disease_form.html')
+
 
 @app.route('/heart_disease', methods=['GET', 'POST'])
 def heart_disease_form():
